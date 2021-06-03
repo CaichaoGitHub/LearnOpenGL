@@ -1,0 +1,13 @@
+//
+// Created by caichao on 2021/6/1.
+//
+
+#ifndef LEARNOPENGL_SRC_MYDEMO_STENCILDEMO_H
+#define LEARNOPENGL_SRC_MYDEMO_STENCILDEMO_H
+
+class StencilDemo
+{
+
+};
+
+#endif //LEARNOPENGL_SRC_MYDEMO_STENCILDEMO_H

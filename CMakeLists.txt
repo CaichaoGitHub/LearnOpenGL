@@ -53,7 +53,7 @@ elseif(APPLE)
 else()
   set(LIBS )
 endif(WIN32)
-
+MESSAGE(STATUS "${GLFW3_LIBRARY}")
 set(CHAPTERS
     1.getting_started
     2.lighting
@@ -163,6 +163,7 @@ set(6.pbr
 set(7.in_practice
     1.debugging
     2.text_rendering
+     mydemo
     #3.2d_game
 )
 

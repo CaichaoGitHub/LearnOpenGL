@@ -7,6 +7,7 @@
 #include <fstream>
 #include <sstream>
 #include <iostream>
+#include <vector>
 
 class Shader
 {
@@ -91,7 +92,25 @@ public:
         glUniform1f(glGetUniformLocation(ID, name.c_str()), value); 
     }
 
+    void addAttribute(const std::vector<std::string> &attributes){
+        for (int i = 0; i < attributes.size(); ++i)
+        {
+            glBindAttribLocation(ID,i,attributes[i].c_str());
+        }
+        _attributes = attributes;
+    }
+
+    GLuint getAttributeIndex(const std::string &n){
+        auto iter = std::find(_attributes.begin(),_attributes.end(),n);
+        if (iter == _attributes.end())
+            return -1;
+        return iter - _attributes.begin();
+    }
+
 private:
+
+    std::vector<std::string> _attributes;
+
     // utility function for checking shader compilation/linking errors.
     // ------------------------------------------------------------------------
     void checkCompileErrors(unsigned int shader, std::string type)

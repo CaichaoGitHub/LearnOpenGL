@@ -164,6 +164,7 @@ set(7.in_practice
     1.debugging
     2.text_rendering
      mydemo
+        particles
     #3.2d_game
 )
 

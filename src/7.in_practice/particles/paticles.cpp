@@ -52,7 +52,7 @@ enum VertexAttribs {
     TexCoordAttr
 };
 
-#define BG_COLOR .5, .5, .5
+#define BG_COLOR .1, .1, .1
 #define WIN_TITLE "Transform Feedback by MacSlow"
 
 #define CUBE_SIZE 10
@@ -103,7 +103,7 @@ GLfloat up[3] = {0.0, 1.0, 0.0};
 GLfloat translate[3] = {0.0, 0.0, -25.0};
 GLfloat angles[3] = {0.0, 0.0, 0.0};
 GLint useOpacity = 0;
-
+int window_wid, window_hei;
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void processInput(GLFWwindow *window);
@@ -130,6 +130,8 @@ void cursorposfun(GLFWwindow*,double x ,double y)
 {
     mouseX = x;
     mouseY = y;
+//    mouseX = (x / window_wid * 2 - 1);
+//    mouseY =   (y / window_hei * 2 - 1);
 //    printf("x y (%.2f %.2f)",x,y);
 }
 
@@ -528,11 +530,11 @@ int main(int argc, char* argv[]) {
         return -1;
     }
 
-    int window_wid, window_hei;
+
     glfwGetFramebufferSize(window,&window_wid,&window_hei);
 
-     mouseX = window_wid / 2;
-     mouseY = window_hei / 2;
+     mouseX = 0;
+     mouseY = 0;
 
     // create vertex-only shader-program
     GLuint feedbackProg = createShaderProgram (particleGravitySrc, NULL, false);
@@ -638,19 +640,22 @@ int main(int argc, char* argv[]) {
                        GL_DYNAMIC_COPY);
             blackHoleMass = 0.0;
         }
-        if (glfwGetKey(window, GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS)
+        if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
         {
             blackHoleMass = BLACK_HOLE_MASS;
+            printf("GLFW_MOUSE_BUTTON_LEFT \n");
         }
 
-        if (glfwGetKey(window, GLFW_MOUSE_BUTTON_RIGHT) == GLFW_PRESS)
+        if (glfwGetKey(window, GLFW_KEY_B) == GLFW_PRESS)
         {
             blackHoleMass = -0.25 * BLACK_HOLE_MASS;;
+            printf("GLFW_MOUSE_BUTTON_RIGHT \n");
         }
 
-        if (glfwGetKey(window, GLFW_MOUSE_BUTTON_MIDDLE) == GLFW_PRESS)
+        if (glfwGetKey(window, GLFW_KEY_C) == GLFW_PRESS)
         {
             blackHoleMass = 0;;
+            printf("GLFW_MOUSE_BUTTON_MIDDLE \n");
         }
 
 
